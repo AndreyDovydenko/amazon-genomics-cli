@@ -1,0 +1,22 @@
+version: 0.2
+
+env:
+  shell: bash
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - pip install --upgrade pip
+  build:
+    commands:
+      - pip install -r ./packages/wes_adapter/requirements.txt -t ./packages/wes_adapter/
+artifacts:
+  base-directory: ./packages/wes_adapter/
+  files:
+    - '**/*'
+  exclude-paths:
+    - ./buildspec.yml
+    - ./local-server.py
+    - ./*.sh
